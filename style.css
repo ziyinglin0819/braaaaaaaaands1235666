@@ -1,0 +1,355 @@
+/* 基本設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 讓邊框和內邊距不影響元素的總寬高，排邊更精準 */
+}
+
+body {
+    /* 確保 body 也是完全貼齊邊緣 */
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 切實置中 */
+    padding: 20px 10%;
+    background-color: #C73939; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+/* Logo 外層容器 */
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo 連結樣式：確保它是純白、沒底線 */
+.logo img {
+    height: auto;      /* 讓高度隨寬度等比例縮放 */
+    max-height: 40px;  /* 限制最大高度 */
+    display: block;    
+    transition: opacity 0.2s;
+}
+
+.logo img:first-child {
+    transform: translateY(-2px); /* 透過位移把圖標視覺重心往上提 2 像素 */
+    margin-right: 12px;          /* 幫圖標和標準字之間加上舒服的間距 */
+}
+
+.logo img:last-child {
+    width: auto;                 /* 避免標準字被強制拉伸到 100% 寬 */
+}
+
+/* 滑鼠移到 Logo 上時稍微變透明，提示可以點擊 */
+.logo a:hover {
+    opacity: 0.85;
+}
+
+/* 中間導覽選單外層清單 */
+.nav-links {
+    display: flex;
+    list-style: none;/* 移除點點符號 */
+  align-items:center;justify-content:center;
+  margin:0px;
+  padding:0px;
+}
+
+/* 讓選單裡的項目保持間距 */
+.nav-links li {
+    margin: 0 20px;
+}
+
+/* 選單文字樣式：白色、加粗、預設稍微帶一點透明 */
+.nav-links a {
+    display: block;
+    padding: 10px 0;    /* ✨ 關鍵：給文字上下加上對稱的空間，讓 Flex 更精準地抓到中線 */
+    line-height: 1;
+    text-decoration: none;
+    color: #ffffff;         
+    font-weight: 600;
+    transition: opacity 0.2s, text-decoration 0.2s;
+}
+
+/* 💡 關鍵修正：當滑鼠移上去（Hover）時，亮度全開並顯示底線 */
+.nav-links a:hover {
+    opacity: 0.85;             
+    text-decoration: underline; /* 滑鼠移上去顯現底線 */
+}
+
+
+/* ==========================================
+   品牌故事主要樣式區
+   ========================================== */
+
+.story-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 1. Hero 橫幅大圖區 */
+.hero-section {
+    background-image: url('https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=1200&q=80'); /* 暫代圖：廚房家庭感，可更換 */
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* 淡淡陰影襯托文字 */
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+}
+
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 40px;
+    max-width: 550px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hero-content .sub-title {
+    color: #666;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.hero-content h2 {
+    color: #D84315; /* 採用您的主色調 */
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+}
+
+/* 2. & 3. 兩欄式圖文網格 */
+.info-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.bg-white-patch {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.grid-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    background-color: #ddd; /* 圖片加載前墊底色 */
+}
+
+/* 這裡為各個圖片區塊設定預設的意境圖，上線時可換成「初點泡菜」的實景照 */
+.img-history { background-image: url('https://i.postimg.cc/LsPXRytr/IMG-7177.png'); }
+.img-nutrition { background-image: url('https://i.postimg.cc/9MSJTQR0/IMG-7175.jpg'); }
+.img-farming { background-image: url('https://global-blog.cpcdn.com/tw/2022/01/AdobeStock_223515133--1-.jpeg'); }
+.img-earth { background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80'); }
+
+.grid-card h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.grid-card p {
+    font-size: 15px;
+    color: #555;
+    text-align: justify;
+}
+
+/* 4. 泡菜小知識專區 */
+.myth-section {
+    background-image: url('https://i.postimg.cc/bYn1wTTp/IMG-7182.png'); /* 暫代圖：韓式/中式精緻料理感 */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.myth-overlay {
+    position: absolute;
+    top: 0;
+    right: 0; /* 配合 image_6c68eb.jpg，將白框靠右排版 */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8%;
+}
+
+.myth-content {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 40px;
+    max-width: 500px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.myth-content h3 {
+    color: #333;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.myth-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* 按鈕樣式 */
+.btn-more {
+    display: inline-block;
+    background-color: #D84315; /* 配合您的主色 */
+    color: #ffffff;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-more:hover {
+    background-color: #BF360C;
+    transform: translateY(-2px);
+}
+
+/* 頁尾樣式 */
+.story-footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #2c3e50;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 60px;
+}
+
+/* RWD 響應式：手機版自動轉為單欄 */
+@media (max-width: 768px) {
+    .info-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .hero-overlay, .myth-overlay {
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero-content, .myth-content {
+        max-width: 100%;
+        padding: 20px;
+    }
+    .hero-section, .myth-section {
+        height: auto;
+        min-height: 350px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    /* 1. 修正選單偏右問題，並保持 Logo 與文字垂直置中 */
+    .navbar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 24px 20px !important; /* 歸零百分比，改用固定小邊距，防止推歪 */
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Logo 專屬調整：置中且不貼頂，維持舒適比例 */
+    .logo {
+        margin-bottom: 20px !important; /* 幫 Logo 和下方選單拉開舒適的距離 */
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .logo a {
+        justify-content: center !important; /* 確保圖片在超連結內水平居中 */
+    }
+
+    /* 3. 選單區塊滿版置中 */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column !important; /* 改為直列排列 */
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 4. 清除網頁版殘留的左右 margin */
+    .nav-links li {
+        margin: 8px 0 !important; /* 清除左右 margin，改用上下 margin 撐開間距 */
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .nav-links a {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 6px 0 !important;
+    }
+
+    /* 5. 泡菜內容區手機版優化 */
+    .brand-title { 
+        font-size: 2.2rem !important; 
+    }
+    
+    .features-section { 
+        gap: 16px !important; 
+        padding: 20px 16px !important;
+    }
+    
+    .feature-item { 
+        min-width: 120px !important; 
+    }
+    
+    .product-grid {
+        gap: 24px !important; /* 手機版卡片間距縮小，更緊湊好看 */
+    }
+}
